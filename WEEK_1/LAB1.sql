@@ -3,6 +3,7 @@ create database taxation;
 use taxation;
 drop database taxation;
 use taxation;
+/*ENTITY-1:TAXPAYER*/
 create database taxation;
 use taxation;
 create table taxpayer(
@@ -28,6 +29,7 @@ INSERT INTO Taxpayer VALUES
 (106,'FGHJK6789L','Meera Singh','1985-12-30','Consultant',1500000.00,'meera.singh@example.com',FALSE);
 show tables;
 select * from taxpayer;
+/*ENTITY-2:INCOME CATEGORY*/
 CREATE TABLE Income_Category(
 category_id INT PRIMARY KEY,
 category_name VARCHAR(50) NOT NULL UNIQUE,
@@ -43,6 +45,7 @@ INSERT INTO Income_Category VALUES
 (6,'Agricultural Income','Income from eligible agricultural activities',FALSE);
 show tables;
 select * from Income_Category;
+/*ENTITY-3:FINANCIAL_YEAR*/
 CREATE TABLE Financial_Year(
 year_id INT PRIMARY KEY,
 year_label VARCHAR(9) NOT NULL UNIQUE,
@@ -60,6 +63,7 @@ INSERT INTO Financial_Year VALUES
 (6,'2025-2026','2025-04-01','2026-03-31','2026-07-31',TRUE);
 SHOW TABLES;
 select * from Financial_Year;
+/*ENTITY-4:INCOME_RECORD*/
 CREATE TABLE Income_Record(
 income_id INT PRIMARY KEY,
 taxpayer_id INT NOT NULL,
@@ -78,3 +82,67 @@ INSERT INTO Income_Record VALUES
 (1006,106,'Professional Consulting','Business',1500000.00,'2026-03-31','2025-2026');
 show tables;
 select * from Income_Record;
+show tables;
+select * from Income_Record;
+show tables;
+select * from taxpayer;
+use taxation;
+show tables;
+select * from Income_Record;
+/*PARTD-DML TASKS*/
+INSERT INTO taxpayer
+(taxpayer_id, pan_number, full_name, date_of_birth, occupation, annual_income, email, is_active)
+VALUES
+(107,'GHIJK7890M','Rahul Verma','1997-05-12','Engineer',900000.00,'rahul.verma@example.com',TRUE);
+show tables;
+select * from taxpayer;
+UPDATE taxpayer
+SET annual_income = 950000.00
+WHERE taxpayer_id = 101;
+show tables;
+select * from taxpayer;
+UPDATE taxpayer
+SET occupation = 'Software Consultant'
+WHERE taxpayer_id = 105;
+UPDATE taxpayer
+SET is_active = TRUE
+WHERE taxpayer_id = 106;
+show tables;
+select * from taxpayer;
+DELETE FROM taxpayer
+WHERE taxpayer_id = 107;
+show tables;
+select * from taxpayer;
+INSERT INTO Income_Category
+(category_id, category_name, description, taxable)
+VALUES
+(7,'Rental Income','Income received from rental properties',TRUE);
+show tables;
+select * from Income_Category;
+/*PART-E :DDL MODIFICATION TASKS*/
+ALTER TABLE taxpayer
+ADD phone_number VARCHAR(15);
+show tables;
+select *from taxpayer;
+ALTER TABLE Income_Record
+ADD remarks VARCHAR(200);
+show tables;
+select * from Income_Record;
+ALTER TABLE taxpayer
+MODIFY occupation VARCHAR(100);
+show tables;
+select *from taxpayer;
+select * from tax_Office;
+truncate table tax_Office;
+drop table tax_Office;
+/*PART-F*/
+INSERT INTO Taxpayer
+VALUES
+(101,'AAAAA1111A','Test User','2000-01-01','Student',10000.00,'test1@example.com',TRUE);
+INSERT INTO Taxpayer
+VALUES
+(108,'ABCDE1234F','Another User','2000-01-01','Student',20000.00,'test2@example.com',TRUE);
+INSERT INTO Taxpayer
+(taxpayer_id,pan_number,full_name,date_of_birth,occupation,annual_income,email,is_active)
+VALUES
+(109,'LMNOP1234Q',NULL,'2000-01-01','Student',30000.00,'test3@example.com',TRUE);

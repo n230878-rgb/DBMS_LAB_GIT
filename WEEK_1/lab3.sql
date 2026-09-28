@@ -16,11 +16,11 @@ SELECT * FROM Income_Record;
 -- =========================
 
 -- 1
-SELECT UPPER(full_name) AS Name_Upper
+SELECT UPPER(full_name) 
 FROM taxpayer;
 
 -- 2
-SELECT LOWER(occupation) AS Occupation_Lower
+SELECT LOWER(occupation) 
 FROM taxpayer;
 
 -- 3
@@ -57,7 +57,7 @@ FROM taxpayer;
 -- 10
 SELECT *
 FROM taxpayer
-WHERE pan_number LIKE 'AP%';
+WHERE pan_number LIKE 'AP';
 
 -- =========================
 -- PART C : NUMERIC FUNCTIONS
@@ -179,8 +179,7 @@ FROM Financial_Year;
 -- 4
 SELECT full_name,
 CAST(annual_income AS DECIMAL(12,2)) AS Decimal_Income
-FROM taxpayer;
-
+from taxpayer;
 -- 5
 SELECT full_name,
 CAST(annual_income AS CHAR) AS Income_String
